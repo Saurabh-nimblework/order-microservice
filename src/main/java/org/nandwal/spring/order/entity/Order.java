@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "orders_table")
+@Table(name = "user_orders")
 public class Order {
     @Id
     private String orderId;
