@@ -1,6 +1,7 @@
 package org.nandwal.spring.order;
 
-import org.apache.commons.logging.Log;
+import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,8 +9,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "org.nandwal.spring.order")
+@Slf4j
 public class ProducerApplication {
-    private static final Log log = LogFactory.getLog(ProducerApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(ProducerApplication.class, args);

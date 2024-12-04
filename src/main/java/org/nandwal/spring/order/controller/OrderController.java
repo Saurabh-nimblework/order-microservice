@@ -6,11 +6,13 @@ import org.nandwal.spring.order.kafka.OrderProducerConfig;
 import org.nandwal.spring.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/order")
+@Slf4j
 public class OrderController {
 
     @Autowired
@@ -36,7 +38,7 @@ public class OrderController {
             String orderJson = objectMapper.writeValueAsString(order);
             orderProducerConfig.publish(orderJson);
             orderService.saveOrder(order);
-            System.out.println("Order placed");
+            log.info("Order placed");
         } catch (Exception e) {
             e.printStackTrace();
         }
