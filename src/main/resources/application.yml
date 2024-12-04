@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        sendOrderDetails-out-0:
+          destination: orders-details-topic
+          content-type: application/json
+        receiveInventoryUpdates-in-0:
+          content-type: application/json
+          destination: inventory-updates-topic
+      function:
+        definition: receiveInventoryUpdates
+      kafka:
+        binder:
+          brokers: localhost:19092
+  application:
+    name: producer-service
+  datasource:
+    password: password
+    username: root
+    url: jdbc:mysql://localhost:3306/orders
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+server:
+  port: '8080'
